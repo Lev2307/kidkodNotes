@@ -27,8 +27,6 @@ class NotesHomepageView(ListView):
             body = form.cleaned_data.get('body')
             status = form.cleaned_data.get('status')
             image = form.cleaned_data.get('image')
-            img_obj = form.instance
-            print(img_obj)
             new_note = NotesModel.objects.create(header=header, body=body, status=status, image=image)
             new_note.save()
         return redirect('index')
