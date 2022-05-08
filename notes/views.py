@@ -21,12 +21,15 @@ class NotesHomepageView(ListView):
         return context
 
     def post(self, request, *args, **kwargs):
-        form = CreateNoteModelForm(request.POST)
+        form = CreateNoteModelForm(request.POST, request.FILES)
         if form.is_valid():
             header = form.cleaned_data.get('header')
             body = form.cleaned_data.get('body')
             status = form.cleaned_data.get('status')
-            new_note = NotesModel.objects.create(header=header, body=body, status=status)
+            image = form.cleaned_data.get('image')
+            img_obj = form.instance
+            print(img_obj)
+            new_note = NotesModel.objects.create(header=header, body=body, status=status, image=image)
             new_note.save()
         return redirect('index')
 

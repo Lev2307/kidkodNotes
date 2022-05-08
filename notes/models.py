@@ -9,6 +9,7 @@ class NotesModel(models.Model):
     status = models.BooleanField(default=False)
     date = models.DateTimeField(default=timezone.now)
     checkbox = models.BooleanField(default=False)
+    image = models.ImageField(upload_to="notes_images/", default='notes_images/default/default_notes.jpg', null=True, blank=True)
 
     class Meta:
         ordering = ['-date']

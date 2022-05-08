@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% load crispy_forms_tags %}
 
 <!-- CSS only -->
@@ -11,7 +12,7 @@
         <div>
             {% crispy form %}
             {% if selected_to_delete %}
-                <a href="delete_selected/"><button type="submit" class="btn btn-outline-warning m-3">Удалить все выбранные?</button></a>
+                <a href="delete_selected/"><button type="submit" class="btn btn-outline-warning">Удалить все выбранные?</button></a>
             {% endif %}
             {% if confirmed.count > 0 %}
                 <a href="delete_all_confirmed_notes/" class="btn btn-outline-danger">Удалить все завершённые?</a>
@@ -30,6 +31,13 @@
                                     <a href="check/{{note.id}}/"><input type="checkbox" value="{{note.id}}" onclick="window.location.href='check/{{note.id}}/'"></a>
                                 {% endif %}
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center border-bottom p-2">
+                            {% if note.image %}
+                                <img src="{{ note.image.url }}" height="300" width="300">
+                            {% else %}
+                                <img src="{% static 'media/notes_images/default/default_notes.jpg' %}" height="300" width="300">
+                            {% endif %}
                         </div>
                         <div class="pb-4">
                             <span class="fw-normal ps-2">{{ note.body }}</span>

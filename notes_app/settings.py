@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1i&u45y53mu_!^m3mmdwzs5v)v@h7+mpm)!^vs!q^no6#eqpob
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['powerful-tundra-35946.herokuapp.com']
+ALLOWED_HOSTS = ["127.0.0.1", 'powerful-tundra-35946.herokuapp.com']
 
 
 # Application definition
@@ -124,6 +124,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'staticbase',
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'staticbase' / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

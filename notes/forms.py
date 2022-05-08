@@ -12,6 +12,7 @@ class CreateNoteModelForm(forms.ModelForm):
         self.helper.layout = Layout(
             Field('header', css_class="form-control mb-2", PlaceHolder="Заголовок..."),
             Field('body', css_class="form-control mb-2", PlaceHolder="Описание..."),
+            Field('image', css_class="form-control mb-2"),
             Field('status', css_class="form-check-input mb-2 text-info"),
             ButtonHolder (
                 Submit('create', 'Добавить', css_class='btn btn-success mb-2')
@@ -23,10 +24,12 @@ class CreateNoteModelForm(forms.ModelForm):
             'header',
             'body',
             'status',
+            'image'
         ]
         labels = {
             'header': 'Заголовок',
             'body': 'Описание',
+            'image': 'Изображение',
             'status': 'Статус',
         }
 
@@ -39,6 +42,7 @@ class EditNoteModelForm(forms.ModelForm):
         self.helper.layout = Layout(
             Field('header', css_class="form-control mb-2", PlaceHolder="Заголовок..."),
             Field('body', css_class="form-control mb-2", PlaceHolder="Описание..."),
+            Field('image', css_class="form-control mb-2"),
             Field('status', css_class="form-check-input mb-2 text-info"),
             ButtonHolder (
                 Submit('edit', 'Изменить', css_class='btn btn-warning mb-2 fw-normal')
@@ -49,10 +53,12 @@ class EditNoteModelForm(forms.ModelForm):
         fields = [
             'header',
             'body',
-            'status'
+            'status',
+            'image'
         ]
         labels = {
             'header': 'Заголовок',
             'body': 'Описание',
+            'image': 'Изображение',
             'status': 'Статус',
         }

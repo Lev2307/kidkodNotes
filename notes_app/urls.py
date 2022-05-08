@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from notes.views import NotesHomepageView, change_status, EditNoteView, DeleteNoteView, DeleteAllConfirmedNotesView, DeleteAllChosenNote, checkbox_delete_check
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +28,4 @@ urlpatterns = [
     path('delete_all_confirmed_notes/', DeleteAllConfirmedNotesView.as_view(), name="delete_allconfirmed_note"),
     path('delete_selected/', DeleteAllChosenNote.as_view()),
     path('check/<int:pk>/', checkbox_delete_check),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
