@@ -59,6 +59,6 @@ class EditNoteModelForm(forms.ModelForm):
         labels = {
             'header': 'Заголовок',
             'body': 'Описание',
-            'image': 'Изображение:',
+            'image': 'Изображение',
             'status': 'Статус',
         }
