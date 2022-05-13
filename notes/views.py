@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from .forms import CreateNoteModelForm, EditNoteModelForm
@@ -90,3 +91,9 @@ def checkbox_delete_check(request, pk):
     note.save()
     return redirect('index')
             
+def index_json_view(request):
+    todos = NotesModel.objects.all().values()
+    return JsonResponse({'todos': list(todos)}, safe=False)
+
+def json_frontend_view(request): 
+    return render(request, 'json_simple.html')

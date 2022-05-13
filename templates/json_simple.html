@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %} 
+    <form action="./create_simple" method="post">
+        {% csrf_token %}
+        <input type="text" name="header" id="">
+        <input type="text" name="body" id="">
+        <input type="submit" value="Добавить">
+    </form>
+
+<script>
+    let body = document.querySelector('body')
+
+    function createTodo(obj) {
+        let todo = document.createElement('div')
+        let h1 = document.createElement('h1')
+        h1.textContent = obj.header;
+        let desc = document.createElement('p')
+        desc.textContent = obj.body;
+        let img = document.createElement('img')
+        img.setAttribute('src', `/media/${obj.image}`)
+        todo.append(h1)
+        todo.append(img)
+        todo.append(desc)
+        return todo
+    }
+
+    function appendToElement(what, to) {
+        to.append(what)
+    }
+
+    function dataToHtml(data) {
+        for (let i = 0; i < data.length; i++) {
+            let todo = createTodo(data[i])
+            appendToElement(todo, body)
+        }
+    }
+
+    fetch('./json_simple')
+        .then(response => response.json())
+        .then(data => dataToHtml(data.todos))
+</script>
+{% endblock content %}
