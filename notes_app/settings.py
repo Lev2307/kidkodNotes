@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes',
     'crispy_forms',
-    'django_cleanup'
+    'django_cleanup',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

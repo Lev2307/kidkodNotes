@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from notes.views import (
     NotesHomepageView, change_status, EditNoteView, DeleteNoteView,
     DeleteAllConfirmedNotesView, DeleteAllChosenNote, checkbox_delete_check, index_json_view,
@@ -26,6 +26,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', NotesHomepageView.as_view(), name="index"),
+    path('', include('api.urls')),
     path('change_status/<int:pk>/', change_status, name='change_status'),
     path('edit_note/<int:pk>/', EditNoteView.as_view(), name="edit_note"),
     path('delete_note/<int:pk>/', DeleteNoteView.as_view(), name="delete_note"),
