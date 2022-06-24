@@ -26,7 +26,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', NotesHomepageView.as_view(), name="index"),
-    path('', include('api.urls')),
+    path('api/', include('api.urls')),
     path('change_status/<int:pk>/', change_status, name='change_status'),
     path('edit_note/<int:pk>/', EditNoteView.as_view(), name="edit_note"),
     path('delete_note/<int:pk>/', DeleteNoteView.as_view(), name="delete_note"),
