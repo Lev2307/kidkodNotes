@@ -23,7 +23,7 @@
         <td>/api/notes/{note.id}/</td>
         <td>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</td>
         <td>Note Id</td>
-        <td>CRUD for detail note</td>
+        <td>RUD for detail note</td>
     </tr>
     <tr>
         <td>/api/notes/create/</td>
